@@ -10,6 +10,7 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
+		<link href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css" rel="stylesheet" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 	</head>
 	<body class="is-preload">
@@ -114,11 +115,10 @@
 					<header class="major">
 						<h2>No encuentras lo que buscas?</h2>
 					</header>
-					<p>Contacta con nosotrosssssss.</p>
+					<p>Contacta con nosotros.</p>
 					<ul class="actions special">
 						<li><a href="mailto:info@squidit.pro" class="button wide primary">Contacto</a></li>
-						<!-- <li><a href="#" class="button wide">Learn More</a></li> -->
-					</ul>
+					<li><a href="#chat" class="button wide">Abrir chat</a></li>
 				</div>
 			</section>
 
@@ -440,6 +440,17 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 			</section>
 		-->
 
+		<!-- Chat -->
+			<section id="chat" class="main style1 special">
+				<div class="container">
+					<header class="major">
+						<h2>Habla con Squidi</h2>
+					</header>
+					<p>Utiliza el asistente virtual para pedir citas, resolver dudas o conocer nuestros servicios.</p>
+					<div id="chat-widget"></div>
+				</div>
+			</section>
+
 		<!-- Footer -->
 			<section id="footer">
 				<ul class="icons">
@@ -461,6 +472,33 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
+			<script type="module">
+				import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js';
+
+				createChat({
+					webhookUrl: 'https://citas.squidit.pro/webhook/bb434d2b-dbb8-4842-8b13-436a93ca31df/chat',
+					mode: 'embedded',
+					defaultLanguage: 'en',
+					initialMessages: [
+					'Hola! 👋',
+					'Mi nombre es Squidi. ¿Cómo puedo ayudarte hoy?'
+					],
+			i18n: {
+			en: {
+			title: 'Bienvenido! 👋',
+			subtitle: "Comienza un chat estamos disponibles 24/7.",
+			footer: '',
+			getStarted: 'Nuevo chat',
+			inputPlaceholder: 'Teclea tu mensaje aquí...',
+		},
+	},
+	enableStreaming: false,
+					showWelcomeMessage: true,
+					title: 'Squidi el asistente',
+					welcomeMessage: 'Hola Soy Squidi el asistente.',
+					firstMessage: 'Te gustaria realizar una cita?.',
+				});
+			</script>
 
 	</body>
 </html>
